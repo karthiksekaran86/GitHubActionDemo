@@ -20,6 +20,8 @@ jobs:
           newname=`echo "$dirname" | sed -e "s/ /_/g"`
           echo $newname
           echo "${dirname}/$filename"
+          ppp=`pwd`
+          echo $ppp
           cp "${dirname}/$filename" ./B/C.txt
           echo "Completed"
         done
