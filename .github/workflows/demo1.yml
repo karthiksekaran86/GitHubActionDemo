@@ -1,8 +1,21 @@
-name: hello-world
-on: push
+name: docs
+on:
+  push:
+    branches: [ main ]
+    paths: 'A/*/newFile.txt'
+
 jobs:
-  my-job:
+  docit:
     runs-on: ubuntu-latest
+
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+    - uses: actions/checkout@main
+    - name: Copy the text file
+      run: |
+        find ./A/ -type f -name "newFile.txt" | while read fname; do
+          dirname=`dirname "$fname"`
+          foldername=`basename "$dirname"`
+          filename=`basename "$fname"`
+          newname=`echo "$dirname" | sed -e "s/ /_/g"`
+          cp "${dirname}/$filename" "./docs/_myfolder/${foldername}.txt"
+        done
