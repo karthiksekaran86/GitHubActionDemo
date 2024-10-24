@@ -19,6 +19,7 @@ jobs:
           filename=`basename "$fname"`
           newname=`echo "$dirname" | sed -e "s/ /_/g"`
           echo $newname
-          cp "${dirname}/$filename" ./C.txt
+          echo "${dirname}/$filename"
+          cp "${dirname}/$filename" ./B/C.txt
           echo "Completed"
         done
