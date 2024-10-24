@@ -14,8 +14,11 @@ jobs:
       run: |
         find ./A/ -type f -name "newFile.txt" | while read fname; do
           dirname=`dirname "$fname"`
+          echo "Started!"
           foldername=`basename "$dirname"`
           filename=`basename "$fname"`
           newname=`echo "$dirname" | sed -e "s/ /_/g"`
+          echo $newname
           cp "${dirname}/$filename" ./C.txt
+          echo "Completed"
         done
