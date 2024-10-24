@@ -17,5 +17,5 @@ jobs:
           foldername=`basename "$dirname"`
           filename=`basename "$fname"`
           newname=`echo "$dirname" | sed -e "s/ /_/g"`
-          cp "${dirname}/$filename" "./B/${foldername}.txt"
+          cp "${dirname}/$filename" "B/${foldername}.txt"
         done
