@@ -1,27 +1,9 @@
-name: docs
-on:
-  push:
-    branches: [ main ]
-    paths: 'A/*/newFile.txt'
-
+name: hello-world
+on: push
 jobs:
-  docit:
+  my-job:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@main
-    - name: Copy the text file
-      run: |
-        find ./A/ -type f -name "newFile.txt" | while read fname; do
-          dirname=`dirname "$fname"`
-          echo "Started!"
-          foldername=`basename "$dirname"`
-          filename=`basename "$fname"`
-          newname=`echo "$dirname" | sed -e "s/ /_/g"`
-          echo $newname
-          echo "${dirname}/$filename"
-          ppp=`pwd`
-          echo $ppp
-          cp "${dirname}/$filename" ./B/C.txt
-          echo "Completed"
-        done
+      - name: my-step
+        run: echo "Hello World!"
+        
